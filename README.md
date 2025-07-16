@@ -2,7 +2,7 @@
 
 A modern web application that transforms your creative scenarios into visually stunning, multi-panel comic strips using state-of-the-art AI for both images and dialogue. This project leverages advanced APIs to ensure character consistency, expressive dialogue, and a variety of professional comic art styles.
 
-![Comic Strip Generator Screenshot](https://via.placeholder.com/800x450?text=Comic+Strip+Generator)
+![Comic Strip Generator Screenshot](Comic-strip1.png)
 
 ---
 
