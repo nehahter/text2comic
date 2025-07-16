@@ -1,0 +1,1588 @@
+/* Importing Google Fonts - Inter and Comic Neue */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Comic+Neue:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+:root {
+    /* Light theme colors */
+    --color-primary: #FF5252; 
+    --color-primary-dark: #D32F2F; 
+    --color-accent: #FFEB3B; 
+    --color-card: #FFFFFF; 
+    --color-input: #F5F5F5; 
+    --color-text: #333333; 
+    --color-placeholder: #757575; 
+    --color-border: #E0E0E0; 
+    --color-gradient: linear-gradient(135deg, #FF5252, #FF8A80);
+    --color-background: linear-gradient(#FFECB3, #FFCCBC);
+    --font-comic: 'Comic Neue', cursive;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --color-accent-bg: rgba(255, 235, 59, 0.15);
+}
+
+body.dark-theme {
+    --color-primary: #FF5252;
+    --color-primary-dark: #FF8A80;
+    --color-accent: #FFC107;
+    --color-card: #1E293B;
+    --color-input: #141B2D;
+    --color-text: #F3F4F6;
+    --color-placeholder: #A3B6DC;
+    --color-border: #334155;
+    --color-gradient: linear-gradient(135deg, #D32F2F, #FF8A80);
+    --color-background: linear-gradient(45deg, #0F172A, #1E293B);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --color-accent-bg: rgba(255, 193, 7, 0.1);
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 15px;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 32px;
+    position: relative;
+    border-radius: 23px;
+    overflow: hidden;
+    background: var(--color-card);
+    box-shadow: 0 10px 20px 0 var(--shadow-color);
+    border: 2px solid var(--color-border);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--color-gradient);
+    transition: background 0.3s ease;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 43px;
+    width: 43px;
+    border-radius: 50%;
+    font-size: 1.05rem;
+    cursor: pointer;
+    display: flex;
+    color: var(--color-placeholder);
+    align-items: center;
+    justify-content: center;
+    background: var(--color-input);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.theme-toggle:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-text);
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-family: var(--font-comic);
+    text-shadow: 1px 1px 2px var(--shadow-color);
+    transition: color 0.3s ease;
+}
+
+.input-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: var(--color-input);
+    box-shadow: inset 0 0 5px var(--shadow-color);
+    border: 2px solid var(--color-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.prompt-help {
+    margin-bottom: 10px;
+    background-color: var(--color-accent-bg);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid var(--color-accent);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.prompt-tip {
+    font-size: 14px;
+    color: var(--color-text);
+    line-height: 1.5;
+    font-family: var(--font-comic);
+    transition: color 0.3s ease;
+}
+
+.prompt-tip strong {
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.textarea-container {
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+#scenario-input {
+    width: 100%;
+    min-height: 120px;
+    padding: 16px 20px;
+    padding-right: 50px; /* Make room for the button */
+    border-radius: 15px;
+    resize: vertical;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    color: var(--color-text);
+    font-family: var(--font-comic);
+    background: var(--color-card);
+    border: 2px solid var(--color-border);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px var(--shadow-color);
+}
+
+#scenario-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px var(--color-accent-bg);
+}
+
+#scenario-input::placeholder {
+    color: var(--color-placeholder);
+    transition: color 0.3s ease;
+}
+
+.random-btn {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    height: 35px;
+    width: 35px;
+    border: none;
+    color: #fff;
+    font-size: 0.75rem;
+    border-radius: 50%;
+    opacity: 0.8;
+    cursor: pointer;
+    background: var(--color-gradient);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.random-btn:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+}
+
+.random-btn.spinning {
+    animation: spin-button 0.5s ease-in-out;
+}
+
+@keyframes spin-button {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.settings-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: var(--color-card);
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid var(--color-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.style-selection, .llm-selection {
+    display: flex;
+    align-items: center;
+}
+
+select {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 2px solid var(--color-border);
+    margin-left: 10px;
+    background-color: var(--color-input);
+    cursor: pointer;
+    font-family: var(--font-comic);
+    color: var(--color-text);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23757575' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px var(--color-accent-bg);
+}
+
+.buttons-row {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    display: flex;
+    gap: 12px;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: var(--font-comic);
+    background: var(--color-gradient);
+    transition: all 0.3s ease;
+    flex: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px var(--shadow-color);
+}
+
+.secondary-btn {
+    background: linear-gradient(135deg, #D32F2F, #FF8A80);
+}
+
+.chat-container {
+    height: 500px;
+    overflow-y: auto;
+    padding: 20px;
+    border: 2px solid var(--color-border);
+    border-radius: 15px;
+    position: relative;
+    background-color: var(--color-input);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.initial-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.initial-message h2 {
+    margin-bottom: 15px;
+    color: var(--color-primary);
+    font-size: 1.8rem;
+    font-family: var(--font-comic);
+    transition: color 0.3s ease;
+}
+
+.initial-message p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-family: var(--font-comic);
+    transition: color 0.3s ease;
+}
+
+.tips-section {
+    margin-top: 25px;
+    text-align: left;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--color-card);
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid var(--color-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.tips-section h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-family: var(--font-comic);
+    transition: color 0.3s ease;
+}
+
+.tips-section ul {
+    padding-left: 20px;
+}
+
+.tips-section li {
+    margin-bottom: 8px;
+    color: var(--color-text);
+    font-family: var(--font-comic);
+    transition: color 0.3s ease;
+}
+
+.comic-strip {
+    margin-bottom: 25px;
+    border-radius: 15px;
+    background-color: var(--color-card);
+    box-shadow: 0 10px 20px var(--shadow-color);
+    padding: 20px;
+    border: 2px solid var(--color-border);
+    position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comic-strip::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--color-gradient);
+    border-radius: 15px 15px 0 0;
+    transition: background 0.3s ease;
+}
+
+.comic-scenario {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: var(--color-accent-bg);
+    border-radius: 10px;
+    border-left: 4px solid var(--color-accent);
+    font-family: var(--font-comic);
+    color: var(--color-text);
+    line-height: 1.5;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.comic-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    background-color: var(--color-input);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--color-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.panel-row {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.panel {
+    position: relative;
+    background-color: white;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    border: 2px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
+    flex: 1;
+    min-height: 200px;
+    aspect-ratio: 1 / 1;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.speech-bubble {
+    position: absolute;
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    font-family: var(--font-comic);
+    font-size: 14px;
+    line-height: 1.4;
+    border: 2px solid var(--color-border);
+    z-index: 5;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.speech-bubble[style*="top"]::before {
+    top: 100%;
+    left: 20px;
+    border-width: 15px 15px 0 0;
+    border-color: white transparent transparent transparent;
+}
+
+.speech-bubble[style*="top"]::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 18px;
+    width: 17px;
+    height: 15px;
+    background-color: white;
+    border-bottom-right-radius: 80%;
+    z-index: -1;
+}
+
+.speech-bubble[style*="bottom"]::before {
+    bottom: 100%;
+    right: 20px;
+    border-width: 0 15px 15px 0;
+    border-color: transparent transparent white transparent;
+}
+
+.speech-bubble[style*="bottom"]::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    right: 18px;
+    width: 17px;
+    height: 15px;
+    background-color: white;
+    border-top-left-radius: 80%;
+    z-index: -1;
+}
+
+.speech-bubble[style*="right"]::before {
+    top: 20px;
+    right: 100%;
+    border-width: 0 15px 15px 0;
+    border-color: transparent white transparent transparent;
+}
+
+.speech-bubble[style*="right"]::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    right: 100%;
+    width: 15px;
+    height: 17px;
+    background-color: white;
+    border-bottom-left-radius: 80%;
+    z-index: -1;
+}
+
+.speech-bubble[style*="left"]::before {
+    top: 20px;
+    left: 100%;
+    border-width: 15px 0 0 15px;
+    border-color: transparent transparent transparent white;
+}
+
+.speech-bubble[style*="left"]::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 100%;
+    width: 15px;
+    height: 17px;
+    background-color: white;
+    border-top-right-radius: 80%;
+    z-index: -1;
+}
+
+.comic-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--color-gradient);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: var(--font-comic);
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.loading-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: var(--color-primary);
+    animation: spin 1s infinite linear;
+    margin-bottom: 20px;
+}
+
+.loading-subtext {
+    color: #ccc;
+    max-width: 80%;
+    text-align: center;
+    margin-top: 10px;
+    font-family: var(--font-comic);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Dark theme specific styles */
+body.dark-theme .panel::before {
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme .speech-bubble {
+    background-color: var(--color-card);
+    color: var(--color-text);
+}
+
+body.dark-theme .speech-bubble[style*="top"]::before {
+    border-color: var(--color-card) transparent transparent transparent;
+}
+
+body.dark-theme .speech-bubble[style*="top"]::after {
+    background-color: var(--color-card);
+}
+
+body.dark-theme .speech-bubble[style*="bottom"]::before {
+    border-color: transparent transparent var(--color-card) transparent;
+}
+
+body.dark-theme .speech-bubble[style*="bottom"]::after {
+    background-color: var(--color-card);
+}
+
+body.dark-theme .speech-bubble[style*="right"]::before {
+    border-color: transparent var(--color-card) transparent transparent;
+}
+
+body.dark-theme .speech-bubble[style*="right"]::after {
+    background-color: var(--color-card);
+}
+
+body.dark-theme .speech-bubble[style*="left"]::before {
+    border-color: transparent transparent transparent var(--color-card);
+}
+
+body.dark-theme .speech-bubble[style*="left"]::after {
+    background-color: var(--color-card);
+}
+
+@media (max-width: 768px) {
+    .comic-panels {
+        padding: 10px;
+    }
+    
+    .panel {
+        min-height: 150px;
+    }
+    
+    .settings-row {
+        flex-direction: column;
+    }
+    
+    .style-selection, .llm-selection {
+        width: 100%;
+    }
+    
+    .buttons-row {
+        flex-direction: column;
+    }
+    
+    select {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    
+    .theme-toggle {
+        top: 15px;
+        right: 15px;
+        height: 35px;
+        width: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel {
+        min-height: 120px;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        padding-right: 45px;
+    }
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.5rem;
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.error {
+    background-color: rgba(211, 47, 47, 0.1);
+    color: var(--color-primary);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 4px solid var(--color-primary-dark);
+    font-family: var(--font-comic);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.comic-characters {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: var(--color-input);
+    border-radius: 10px;
+    border: 2px solid var(--color-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.comic-characters h3 {
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    font-family: var(--font-comic);
+    transition: color 0.3s ease;
+}
+
+.comic-characters ul {
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.comic-characters li {
+    margin-bottom: 5px;
+    font-family: var(--font-comic);
+    color: var(--color-text);
+    transition: color 0.3s ease;
+}
+
+.speaking-character {
+    font-weight: bold;
+    background-color: var(--color-accent-bg);
+    padding: 2px 6px;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: var(--font-comic);
+    transition: background-color 0.3s ease;
+}
+
+.panel-number {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .panel-row {
+        flex-direction: column;
+    }
+    
+    .panel {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.comic-panels::before {
+    content: '';
+    position: absolute;
+}
+
+#comic-style[value="manga"] ~ .chat-container .comic-panels {
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--color-input);
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel {
+    border: 3px solid #000;
+    box-shadow: none;
+    margin: 2px;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel img {
+    filter: grayscale(0.7) contrast(1.2);
+}
+
+#comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #000;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: var(--color-card);
+    color: var(--color-text);
+    border: 2px solid #fff;
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 3px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #fff;
+}
+
+.comic-panels {
+    border-radius: 15px;
+}
+
+/* Thought bubble style */
+.speech-bubble.thought-bubble {
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.speech-bubble.thought-bubble::before {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::after {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::before,
+.speech-bubble.thought-bubble::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+}
+
+/* Bottom positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="bottom"] {
+    margin-bottom: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    bottom: -20px;
+    right: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    bottom: -30px;
+    right: 20%;
+    background-color: white;
+}
+
+/* Top positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="top"] {
+    margin-top: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    top: -20px;
+    left: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    top: -30px;
+    left: 20%;
+    background-color: white;
+}
+
+body.dark-theme .speech-bubble.thought-bubble::before,
+body.dark-theme .speech-bubble.thought-bubble::after {
+    background-color: var(--color-card);
+    border-color: var(--color-border);
+}
+
+.speaking-character {
+    font-weight: bold;
+    background-color: var(--color-accent-bg);
+    padding: 2px 6px;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: var(--font-comic);
+    transition: background-color 0.3s ease;
+    margin-right: 4px;
+    margin-bottom: 3px;
+}
+
+.panel-number {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .panel-row {
+        flex-direction: column;
+    }
+    
+    .panel {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.comic-panels::before {
+    content: '';
+    position: absolute;
+}
+
+#comic-style[value="manga"] ~ .chat-container .comic-panels {
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--color-input);
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel {
+    border: 3px solid #000;
+    box-shadow: none;
+    margin: 2px;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel img {
+    filter: grayscale(0.7) contrast(1.2);
+}
+
+#comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #000;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: var(--color-card);
+    color: var(--color-text);
+    border: 2px solid #fff;
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 3px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #fff;
+}
+
+.comic-panels {
+    border-radius: 15px;
+}
+
+/* Thought bubble style */
+.speech-bubble.thought-bubble {
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.speech-bubble.thought-bubble::before {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::after {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::before,
+.speech-bubble.thought-bubble::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+}
+
+/* Bottom positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="bottom"] {
+    margin-bottom: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    bottom: -20px;
+    right: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    bottom: -30px;
+    right: 20%;
+    background-color: white;
+}
+
+/* Top positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="top"] {
+    margin-top: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    top: -20px;
+    left: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    top: -30px;
+    left: 20%;
+    background-color: white;
+}
+
+body.dark-theme .speech-bubble.thought-bubble::before,
+body.dark-theme .speech-bubble.thought-bubble::after {
+    background-color: var(--color-card);
+    border-color: var(--color-border);
+}
+
+.speaking-character {
+    font-weight: bold;
+    background-color: var(--color-accent-bg);
+    padding: 2px 6px;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: var(--font-comic);
+    transition: background-color 0.3s ease;
+    margin-right: 4px;
+    margin-bottom: 3px;
+}
+
+.panel-number {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .panel-row {
+        flex-direction: column;
+    }
+    
+    .panel {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.comic-panels::before {
+    content: '';
+    position: absolute;
+}
+
+#comic-style[value="manga"] ~ .chat-container .comic-panels {
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--color-input);
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel {
+    border: 3px solid #000;
+    box-shadow: none;
+    margin: 2px;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel img {
+    filter: grayscale(0.7) contrast(1.2);
+}
+
+#comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #000;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: var(--color-card);
+    color: var(--color-text);
+    border: 2px solid #fff;
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 3px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #fff;
+}
+
+.comic-panels {
+    border-radius: 15px;
+}
+
+/* Thought bubble style */
+.speech-bubble.thought-bubble {
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.speech-bubble.thought-bubble::before {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::after {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::before,
+.speech-bubble.thought-bubble::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+}
+
+/* Bottom positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="bottom"] {
+    margin-bottom: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    bottom: -20px;
+    right: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    bottom: -30px;
+    right: 20%;
+    background-color: white;
+}
+
+/* Top positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="top"] {
+    margin-top: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    top: -20px;
+    left: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    top: -30px;
+    left: 20%;
+    background-color: white;
+}
+
+body.dark-theme .speech-bubble.thought-bubble::before,
+body.dark-theme .speech-bubble.thought-bubble::after {
+    background-color: var(--color-card);
+    border-color: var(--color-border);
+}
+
+.speaking-character {
+    font-weight: bold;
+    background-color: var(--color-accent-bg);
+    padding: 2px 6px;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: var(--font-comic);
+    transition: background-color 0.3s ease;
+    margin-right: 4px;
+    margin-bottom: 3px;
+}
+
+.panel-number {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .panel-row {
+        flex-direction: column;
+    }
+    
+    .panel {
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
+
+.comic-panels::before {
+    content: '';
+    position: absolute;
+}
+
+#comic-style[value="manga"] ~ .chat-container .comic-panels {
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--color-input);
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel {
+    border: 3px solid #000;
+    box-shadow: none;
+    margin: 2px;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel img {
+    filter: grayscale(0.7) contrast(1.2);
+}
+
+#comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #000;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: var(--color-card);
+    color: var(--color-text);
+    border: 2px solid #fff;
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 3px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #fff;
+}
+
+.comic-panels {
+    border-radius: 15px;
+}
+
+/* Thought bubble style */
+.speech-bubble.thought-bubble {
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.speech-bubble.thought-bubble::before {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::after {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::before,
+.speech-bubble.thought-bubble::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+}
+
+/* Bottom positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="bottom"] {
+    margin-bottom: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    bottom: -20px;
+    right: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    bottom: -30px;
+    right: 20%;
+    background-color: white;
+}
+
+/* Top positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="top"] {
+    margin-top: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    top: -20px;
+    left: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    top: -30px;
+    left: 20%;
+    background-color: white;
+}
+
+body.dark-theme .speech-bubble.thought-bubble::before,
+body.dark-theme .speech-bubble.thought-bubble::after {
+    background-color: var(--color-card);
+    border-color: var(--color-border);
+}
+
+.speaking-character {
+    font-weight: bold;
+    background-color: var(--color-accent-bg);
+    padding: 2px 6px;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: var(--font-comic);
+    transition: background-color 0.3s ease;
+    margin-right: 4px;
+    margin-bottom: 3px;
+}
+
+.panel-number {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .panel-row {
+        flex-direction: column;
+    }
+    
+    .panel {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.comic-panels::before {
+    content: '';
+    position: absolute;
+}
+
+#comic-style[value="manga"] ~ .chat-container .comic-panels {
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--color-input);
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel {
+    border: 3px solid #000;
+    box-shadow: none;
+    margin: 2px;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel img {
+    filter: grayscale(0.7) contrast(1.2);
+}
+
+#comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #000;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .speech-bubble {
+    background-color: var(--color-card);
+    color: var(--color-text);
+    border: 2px solid #fff;
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 3px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+#comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #000;
+    border-radius: 0;
+}
+
+body.dark-theme #comic-style[value="manga"] ~ .chat-container .panel::before {
+    box-shadow: inset 0 0 0 2px #fff;
+}
+
+.comic-panels {
+    border-radius: 15px;
+}
+
+/* Thought bubble style */
+.speech-bubble.thought-bubble {
+    border-radius: 24px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.speech-bubble.thought-bubble::before {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::after {
+    display: none;
+}
+
+.speech-bubble.thought-bubble::before,
+.speech-bubble.thought-bubble::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+}
+
+/* Bottom positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="bottom"] {
+    margin-bottom: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    bottom: -20px;
+    right: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="bottom"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    bottom: -30px;
+    right: 20%;
+    background-color: white;
+}
+
+/* Top positioned thought bubbles */
+.speech-bubble.thought-bubble[style*="top"] {
+    margin-top: 15px;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::before {
+    display: block;
+    width: 15px;
+    height: 15px;
+    top: -20px;
+    left: 25%;
+    background-color: white;
+}
+
+.speech-bubble.thought-bubble[style*="top"]::after {
+    display: block;
+    width: 8px;
+    height: 8px;
+    top: -30px;
+    left: 20%;
+    background-color: white;
+}
+
+body.dark-theme .speech-bubble.thought-bubble::before,
+body.dark-theme .speech-bubble.thought-bubble::after {
+    background-color: var(--color-card);
+    border-color: var(--color-border);
+}
+
+.speaking-character {
+    font-weight: bold;
+    background-color: var(--color-accent-bg);
+    padding: 2px 6px;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: var(--font-comic);
+    transition: background-color 0.3s ease;
+    margin-right: 4px;
+    margin-bottom: 3px;
+}
+
+.panel-number {
+    display: none;
+}
+}

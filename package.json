@@ -1,0 +1,27 @@
+{
+  "name": "comic-generator",
+  "version": "1.0.0",
+  "description": "A web application that generates comic strips from short scenarios",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "comic",
+    "generator",
+    "ai",
+    "stable-diffusion",
+    "llm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "http": "^0.0.1-security",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+} 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comic Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Comic Strip Generator</h1>
+        <button id="theme-toggle" class="theme-toggle" title="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="input-section">
+            <div class="prompt-help">
+                <p class="prompt-tip"><strong>Try detailed scenarios like:</strong> "A superhero teaching an alien how to make pizza in a space kitchen", "Two pirates finding a treasure map in a haunted library", or "A robot learning to dance at a wild west saloon"</p>
+            </div>
+            <div class="textarea-container">
+                <textarea id="scenario-input" placeholder="Enter your scenario here... Be descriptive for better results!"></textarea>
+                <button id="random-scenario-btn" class="random-btn" title="Get a random scenario">🎲</button>
+            </div>
+            <div class="settings-row">
+                <div class="style-selection">
+                    <label>Comic Style:</label>
+                    <select id="comic-style">
+                        <option value="manga">Manga</option>
+                        <option value="cartoon">Cartoon</option>
+                        <option value="realistic">Realistic</option>
+                        <option value="comic-book">Comic Book</option>
+                    </select>
+                </div>
+                <div class="llm-selection">
+                    <label>Text Model:</label>
+                    <select id="llm-service">
+                        <option value="gemini">Gemini</option>
+                        <option value="huggingface">Hugging Face (Mistral)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="buttons-row">
+                <button id="generate-btn">Generate Comic</button>
+                <button id="clear-history-btn" class="secondary-btn">Clear History</button>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div id="comic-history"></div>
+            <div id="initial-message" class="initial-message">
+                <h2>Welcome to Comic Strip Generator!</h2>
+                <p>Enter a detailed scenario above and click "Generate Comic" to create your own comic strip.</p>
+                <p>Choose between different comic styles and text generation models.</p>
+                <p>All API keys are pre-configured and ready to use!</p>
+                <div class="tips-section">
+                    <h3>Tips for Better Results:</h3>
+                    <ul>
+                        <li>Be specific and descriptive in your scenarios</li>
+                        <li>Include character details, settings, and actions</li>
+                        <li>Image generation may take up to 30 seconds</li>
+                        <li>If images fail to generate, try again or try a different style</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Generating your comic...</p>
+        <p class="loading-subtext">This may take up to 45 seconds. We're creating high-quality images for your comic!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
